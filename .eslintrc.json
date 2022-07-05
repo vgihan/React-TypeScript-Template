@@ -13,8 +13,26 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
+  "ignorePatterns": ["*.css", "*.svg"],
   "rules": {
-    "no-unused-vars":"warn",
-    "prettier/prettier": ["error"]
+    "no-unused-vars": "warn",
+    "prettier/prettier": ["error"],
+    "react/react-in-jsx-scope": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", ["parent", "sibling"], "index"],
+        "pathGroups": [
+          {"pattern": "react", "group": "external", "position": "before"},
+          {"pattern": "*", "group": "external", "position": "after"}
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always"
+      }
+    ]
   }
 }
